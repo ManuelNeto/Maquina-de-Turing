@@ -1,1 +1,57 @@
-<h1>Maquina de Turing</h1>
+<div id="turing-machine">
+  <div class="upper-content">
+    <h2 class="main-title">Maquina de Turing</h2>
+
+    <div class="main-list">
+      <strong> This is a Turing machine simulator. To use it: </strong>
+      <li>
+        Load one of the example programs, or write your own in the Turing machine program area. See below for syntax.
+      </li>
+      <li>
+          Enter something in the 'Input' area - this will be written on the tape initially as input to the machine. Click 'Reset' to initialise the machine.
+      </li>
+      <li>
+          Click on 'Run' to start the Turing machine and run it until it halts (if ever). Click on 'Pause' to interrupt the Turing machine while it is running. Alternately, click 'Step' to run a single step of the Turing machine.
+      </li>
+      <li>
+          Click 'Reset' to restore the Turing machine to its initial state so it can be run again.
+      </li>
+    </div>
+      
+    
+  </div>
+
+  <div class="middle-content">
+
+  	<div class="row">
+
+  		<div class="col-sm-9">
+  			<div class="form-group">
+	    		<textarea class="form-control" id="code-tm" rows="15"></textarea>
+  			</div>
+  		</div>
+
+  		<div class="col-sm-3">
+  			<h1>Control</h1>
+		      
+		        <button class="btn btn-primary">Run</button>
+		      
+		      
+		        <button class="btn btn-info">Step</button>
+		      
+		      
+		        <button class="btn btn-warning">Pause</button>
+		      
+		      
+		        <button class="btn btn-danger">Reset</button>
+		      
+		      <div class="form-group">
+			    <label for="ex-text">Initial input</label>
+			    <input type="text" class="form-control" id="ex-text">
+			  </div>
+		  </div>
+  	</div>
+
+  </div>
+  
+</div>

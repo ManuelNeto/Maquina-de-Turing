@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,10 +73,8 @@
 angular.module('app', ['ui.router', 'ui.router.stateHelper']);
 
 //Require all files here
-__webpack_require__(17);
-__webpack_require__(14);
-__webpack_require__(15);
 __webpack_require__(16);
+__webpack_require__(15);
 
 //Sass
 __webpack_require__(12);
@@ -40073,7 +40071,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "#turing-machine .upper-content .main-title {\n  text-align: center; }\n\n#turing-machine .upper-content .main-list {\n  margin: 20px; }\n\n#turing-machine .middle-content {\n  margin: 20px; }\n", ""]);
 
 // exports
 
@@ -40567,15 +40565,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 14 */
-/***/ (function(module, exports) {
-
-angular.module('app').controller('LoginController', function ($scope, $state) {
-
-});
-
-
-/***/ }),
+/* 14 */,
 /* 15 */
 /***/ (function(module, exports) {
 
@@ -40587,38 +40577,24 @@ angular.module('app').controller('MaquinaTuringController', function ($scope, $s
 /* 16 */
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: C:\\Users\\Manuel\\Downloads\\TuringMachine\\Maquina-de-Turing\\src\\components\\maquinaTuring\\maquinaTuring.html Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type.\n| <h1>Maquina de Turing</h1>");
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
 angular.module('app').config(function(stateHelperProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/maquinaTuring');
 
     stateHelperProvider
 
         .state({
-            name: 'login',
-            url: '/login',
-            templateUrl: 'src/components/login/login.html',
-            controller: 'LoginController'
-        },
-
-        {
-        	name:'maquinaTuring',
-        	url: '/maquinaTuring',
-        	templateUrl: 'src/components/maquinaTuring/maquinaTuring.html',
-        	controller: 'MaquinaTuringController'
-        }
-        )
+            name: 'maquinaTuring',
+            url: '/maquinaTuring',
+            templateUrl: 'src/components/maquinaTuring/maquinaTuring.html',
+            controller: 'MaquinaTuringController'
+        })
 
     });
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
