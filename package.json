@@ -1,42 +1,24 @@
 {
-  "name": "boilerplate",
+  "name": "turing-machine",
   "version": "1.0.0",
-  "description": "desfault description",
-  "main": "index.js",
+  "description": "Turing machine simulator that runs 2 algorithms",
+  "main": "app.js",
   "scripts": {
-    "postinstall": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundle": "webpack",
-    "watch-bundle": "webpack --watch",
-    "start": "http-server -a localhost -p 8000 -o -c1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/viniagostini/si1-project.git"
+    "start": "node app.js"
   },
   "keywords": [
-    "ADD_KEY"
+    "turing-machine",
+    "tc",
+    "ufcg"
   ],
-  "author": "Matheus P. Silva <https://github.com/matheusps>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/viniagostini/si1-project.git"
-  },
-  "homepage": "https://github.com/viniagostini/si1-project#readme",
+  "author": "",
+  "license": "MIT",
   "dependencies": {
     "angular": "^1.6.2",
-    "angular-ui-router": "0.3.2",
-    "angular-ui-router.statehelper": "^1.3.1",
     "bootstrap": "^4.0.0-alpha.6",
-    "http-server": "^0.9.0",
+    "express": "^4.15.2",
     "jquery": "^3.1.1",
-    "tether": "^1.4.0",
-    "webpack": "^2.2.1"
-  },
-  "devDependencies": {
-    "css-loader": "^0.27.1",
-    "node-sass": "^4.5.0",
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.13.2"
+    "tether": "^1.4.0"
   }
 }
