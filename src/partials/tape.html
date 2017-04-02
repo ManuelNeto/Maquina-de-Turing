@@ -1,3 +1,5 @@
 <section id="tape" class="jumbotron">
-    <h2>{{$parent.machineInput}}</h2>
+    <div ng-repeat="log in inputLog">
+        <h2>{{log}}</h2>
+    </div>
 </section>

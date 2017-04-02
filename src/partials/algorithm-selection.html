@@ -4,19 +4,20 @@
             <div class="col col-md-6">
                 <div class="form-group">
                     <label for="input">Input</label>
-                    <input type="text" ng-model="machineInput" class="form-control" id="input" placeholder="Enter input">
+                    <input type="text" ng-model="resolve.input" class="form-control" id="input" placeholder="Enter input">
                 </div>
             </div>
             <div class="col col-md-6">
                 <div class="form-group">
-                    <label for="exampleSelect1">Algorithm Selection</label>
-                    <select class="form-control" id="exampleSelect1">
-                    <option>01*0</option>
-                    <option>Palindrom</option>
+                    <label for="alg-select">Algorithm Selection</label>
+                    <select class="form-control" id="alg-select" ng-model="resolve.alg">
+                    <option value="010">01*0</option>
+                    <option value="PALIND">Palindrom</option>
+                    <option value="0101">0101</option>
                     </select>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success btn-block">Run Simulation</button>
+        <button type="submit" class="btn btn-success btn-block" ng-click="generateTape()">Run Simulation</button>
     </form>
 </section>
