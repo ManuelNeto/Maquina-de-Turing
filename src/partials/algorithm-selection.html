@@ -18,6 +18,12 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success btn-block" ng-click="generateTape()">Run Simulation</button>
+        <button type="submit" class="btn btn-success btn-block" ng-click="runMachine()">Run Simulation</button>
+        <div>
+            <textarea class="form-control" rows="15" ng-model='turing.text'></textarea>
+            <H1>{{inputList}}</H1>
+        </div>
+            
+        
     </form>
 </section>
