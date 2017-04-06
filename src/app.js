@@ -189,6 +189,20 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
             }
 
             currentState = currentFunction[4].netxState ;
+        }else if(currentFunction[5].letter == $scope.inputList[$scope.pointer]) {
+            console.log(currentFunction[5].letter + " " + $scope.inputList[$scope.pointer]);
+            console.log(currentFunction[5]);
+
+            write($scope.pointer, currentFunction[5].letterWrite, true);
+            if(currentFunction[5].diretion == "R"){
+                //moveToRigth();
+                $scope.pointer = $scope.pointer + 1;
+            }else if(currentFunction[5].diretion == "L"){
+                //moveToLeft();
+                $scope.pointer = $scope.pointer - 1;
+            }
+
+            currentState = currentFunction[5].netxState ;
         }
 
 
@@ -458,3 +472,36 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 6 1 1 R R
 */
 
+/*
+palindromo
+0 1 x R 1
+0 0 x R 5
+1 0 0 R 1
+1 1 1 R 1
+1 # # R 2
+2 0 0 R 2
+2 1 1 R 2
+2 B B L 3
+2 x x L 3
+3 0 0 R R
+3 1 x L 4
+4 1 1 L 4
+4 0 0 L 4
+4 # # L 8
+5 1 1 R 5
+5 0 0 R 5
+5 # # R 6
+6 0 0 R 6
+6 1 1 R 6
+6 B B L 7
+6 x x L 7
+7 1 1 R R
+7 0 x L 4
+8 0 0 L 9
+8 1 1 L 9
+8 x x L A
+9 0 0 L 9
+9 1 1 L 9
+9 x x R 0
+
+*/
