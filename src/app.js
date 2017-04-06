@@ -11,6 +11,10 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
    currentState = "0";
    $scope.pointer = 0;
    
+   /*
+    Salva as funções em um array. O estado atual de cada 
+    função determina em qual posição do array a função será salva
+   */
    saveFunctionPerState = function(){
     var contador = 0;
     var flag = false;
@@ -32,10 +36,11 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
             flag = true;
         }
 
-        console.log('contador ' + String(contador) + "current state " + $scope.transitionFunctions[i].currentState);
+        //console.log('contador ' + String(contador) + "current state " + $scope.transitionFunctions[i].currentState);
         
     }
    }
+
 
    isZero = function(number){
     if(number === 0){
@@ -61,11 +66,13 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
     console.log(moveToLeft);
    }
 
+   //gera um array com a entrada
    splitInput = function(){
     $scope.inputList = $scope.resolve.input.split("");
     $scope.inputList.push("B");
    }
 
+   //gera um array com as funções
    splitFunctions = function(){
     splitInput();
     var line = "";
@@ -84,6 +91,7 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 
    };
 
+   //converte a entrada de cada linha do textArea em uma função
    convertLineInFunction = function(){
         for(i = 0; i <  lines.length; i++ ){
             var transitionFunction = {
@@ -99,6 +107,7 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
         }
    }
 
+
    $scope.runMachine = function(){
     
 
@@ -108,7 +117,9 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
     saveFunctionPerState();
     var contador = 0;
 
-    while(currentState != "A" && currentState != "R" && contador < 100){
+    console.log('=========== Start ============');
+
+    while(currentState != "A" && currentState != "R"){
 
         var currentFunction = $scope.functionsPerState[Number(currentState)];
 
@@ -117,7 +128,7 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 
         if (currentFunction[0].letter == $scope.inputList[$scope.pointer]) {
             console.log(currentFunction[0].letter + " " + $scope.inputList[$scope.pointer]);
-            console.log(currentFunction[0]);
+            console.log("function -> " + JSON.stringify(currentFunction[0]));
             write($scope.pointer, currentFunction[0].letterWrite, true);
             if(currentFunction[0].diretion == "R"){
                 //moveToRigth();
@@ -133,7 +144,7 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 
         }else if(currentFunction[1].letter == $scope.inputList[$scope.pointer]) {
             console.log(currentFunction[1].letter + " " + $scope.inputList[$scope.pointer]);
-            console.log(currentFunction[1]);
+            console.log("function -> " + JSON.stringify(currentFunction[1]));
 
             write($scope.pointer, currentFunction[1].letterWrite, true);
             if(currentFunction[1].diretion == "R"){
@@ -147,7 +158,7 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
             currentState = currentFunction[1].netxState ;
         }else if(currentFunction[2].letter == $scope.inputList[$scope.pointer]) {
             console.log(currentFunction[2].letter + " " + $scope.inputList[$scope.pointer]);
-            console.log(currentFunction[2]);
+            console.log("function -> " + JSON.stringify(currentFunction[2]));
 
             write($scope.pointer, currentFunction[2].letterWrite, true);
             if(currentFunction[2].diretion == "R"){
@@ -162,7 +173,7 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 
         }else if(currentFunction[3].letter == $scope.inputList[$scope.pointer]) {
             console.log(currentFunction[3].letter + " " + $scope.inputList[$scope.pointer]);
-            console.log(currentFunction[3]);
+            console.log("function -> " + JSON.stringify(currentFunction[3]));
 
             write($scope.pointer, currentFunction[3].letterWrite, true);
             if(currentFunction[3].diretion == "R"){
@@ -177,7 +188,7 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 
         }else if(currentFunction[4].letter == $scope.inputList[$scope.pointer]) {
             console.log(currentFunction[4].letter + " " + $scope.inputList[$scope.pointer]);
-            console.log(currentFunction[4]);
+            console.log("function -> " + JSON.stringify(currentFunction[4]));
 
             write($scope.pointer, currentFunction[4].letterWrite, true);
             if(currentFunction[4].diretion == "R"){
@@ -191,7 +202,7 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
             currentState = currentFunction[4].netxState ;
         }else if(currentFunction[5].letter == $scope.inputList[$scope.pointer]) {
             console.log(currentFunction[5].letter + " " + $scope.inputList[$scope.pointer]);
-            console.log(currentFunction[5]);
+            console.log("function -> " + JSON.stringify(currentFunction[5]));
 
             write($scope.pointer, currentFunction[5].letterWrite, true);
             if(currentFunction[5].diretion == "R"){
@@ -205,181 +216,20 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
             currentState = currentFunction[5].netxState ;
         }
 
-
-
-        /*if(currentState == "0"){
-            if($scope.inputList[$scope.pointer] === $scope.transitionFunctions ){
-                writeX($scope.pointer);
-                $scope.pointer += 1;
-                currentState = "0";
-            }
-
-            console.log($scope.functionsPerState);
-            break;
-        }
-        if(currentState == "0"){
-            console.log('state 0');
-            if($scope.inputList[$scope.pointer] === "0"){
-                writeX($scope.pointer);
-                $scope.pointer += 1;
-                currentState = "0";
-            }else if($scope.inputList[$scope.pointer] === "1"){
-                writeX($scope.pointer);
-                $scope.pointer +=1;
-                currentState = "1";
-            }
-        }else if(currentState == "1"){
-            console.log('state 1');
-            if($scope.inputList[$scope.pointer] === "0"){
-                writeX($scope.pointer);
-                $scope.pointer += 1;
-                currentState = "2";
-            }else if($scope.inputList[$scope.pointer] === "1"){
-                currentState = "R";
-                break;
-            }
-        }else if(currentState == "2"){
-            console.log('state 2');
-            if($scope.inputList[$scope.pointer] === "B"){
-                currentState = "A";
-                break;
-            }else {
-                currentState = "R";
-                break;
-            }
-        }*/
         contador += 1;
-        console.log(currentState);
+        console.log("current State " + currentState);
         console.log('pointer ' + $scope.pointer);
     }
 
     if(currentState == "A"){
-        console.log('accepted');
+        accept();
+        console.log('ACCEPTED');
     }else if(currentState == "R"){
-        console.log('rejected');
+        reject();
+        console.log('REJECTED');
     }
    
    }
-
-
-   $scope.generateTape = function(){
-        $scope.tape = $scope.resolve.input.split("");
-        $scope.inputLog = [];
-        if($scope.resolve.alg === "010"){
-            goTo010InitialState($scope.tape);
-        }else if($scope.resolve.alg === "PALIND"){
-            goToPalindInitialState($scope.tape);
-        }else{
-            goTo01InitialState($scope.tape);
-        }
-   };
-
-
-   // =========================== PALINDROME ===============================
-   function goToPalindInitialState(input){
-       $scope.inputLog.push(" === Is Plalimdrom? === ");
-        console.log('at initial state:' + input);
-        console.log('turing.text ' + $scope.turing.text.split());
-        //splitInput();
-        console.log($scope.turing.text.length);
-        $scope.runMachine();
-        $scope.inputLog.push("qInicial: " + input.join(""));
-        if(input.length === 0){
-            accept();
-        }else{
-            goToPalindState2(input, input[0]);
-        }
-    };
-
-    function goToPalindState2(input){
-        console.log('at state 2: ' + input);
-        $scope.inputLog.push("q2: " + input.join(""));
-        if(input.length === 1){
-            reject();
-            return;
-        }
-
-        if(input.length === 0){
-            accept();
-            return;
-        }
-
-        pointer = input[0];
-        input.shift();
-        goToPalindState3(input, pointer);
-    };
-
-    function goToPalindState3(input, pointer){
-        console.log('at state 3: ' + input);
-        $scope.inputLog.push("q3: " + input.join(""));
-        if(input[input.length-1] === pointer){
-            input.splice(-1,1);
-            goToPalindState2(input);
-        }else{
-            reject();
-        }
-    };
-
-
-
-   // =========================== 01*0 ===============================
-   function goTo010InitialState(input){
-        $scope.inputLog.push(" === Respects 01*0? === ");
-        $scope.inputLog.push("qInicial: " + input.join(""));
-        if(input[0] === '0'){
-            input.shift();
-            goTo010MiddleState(input);
-        }else{
-            reject();
-        }
-    };
-
-    function goTo010MiddleState(input){
-        while(input[0] === '1'){
-            $scope.inputLog.push("q1: " + input.join(""));
-            input.shift();
-        };
-        goTo010FinalState(input);
-    };
-
-    function goTo010FinalState(input){
-        $scope.inputLog.push("qFinal: " + input.join(""));
-        (input.length === 1) ? accept() : reject();
-    };
-
-    // =========================== 010101** ===============================
-   function goTo01InitialState(input){
-        $scope.inputLog.push(" === Respect 0101? === ");
-        goTo01State1(input);
-    };
-
-    function goTo01State1(input){
-        $scope.inputLog.push("q1: " + input.join(""));
-        if(input.length === 0){
-            accept();
-            return;
-        }else if(input[0] === '0'){
-            input.shift();
-            goTo01State2(input);
-        }else{
-            reject();
-        }
-    };
-
-    function goTo01State2(input){
-        $scope.inputLog.push("q2: " + input.join(""));
-        if(input.length === 0){
-            reject();
-            return;
-        } else if(input[0] === '1'){
-            input.shift();
-        }else{
-            reject();
-        }
-        goTo01State1(input);
-    };
-
-
 
     // =========================== Shared ===============================
     function accept(){
@@ -399,7 +249,7 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 0 0 x R 0
 0 1 x R 1
 1 0 x R 2
-1 1 x R R
+1 1 1 R R
 2 B x _ A
 2 0 x _ R*/
 
@@ -421,12 +271,15 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 0 B B L A
 1 0 0 R 1
 1 y y R 1
-1 1 y L 2
+1 1 y L 4
+1 B B L R
 2 0 0 L 2
-2 y y L 2
 2 x x R 0
 3 y y R A
 3 B B L A
+4 y y L 4
+4 x x R R
+4 0 0 L 2
 */
 
 /*
@@ -467,13 +320,14 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 4 x x R 0
 5 1 y R 2
 5 y y R 5
+5 B B L R
 6 y y R 6
 6 B B R A
 6 1 1 R R
 */
 
 /*
-palindromo
+w#wr
 0 1 x R 1
 0 0 x R 5
 1 0 0 R 1

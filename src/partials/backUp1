@@ -297,6 +297,16 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 
 });
 
+<div class="col col-md-6">
+                <div class="form-group">
+                    <label for="alg-select">Algorithm Selection</label>
+                    <select class="form-control" id="alg-select" ng-model="resolve.alg">
+                    <option value="010">01*0</option>
+                    <option value="PALIND">Palindrom</option>
+                    <option value="0101">0101</option>
+                    </select>
+                </div>
+            </div>
 
 0 0 x R 0
 0 1 x R 1

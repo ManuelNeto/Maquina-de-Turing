@@ -1,5 +1,20 @@
 <section id="algorithm-selection" class="jumbotron">
     <form>
+        <div id="IntroText">
+            This is a Turing machine simulator.
+            To use it:<br>
+            <ol>
+               <li>
+                  Write your  Turing machine program in area.  See below for syntax.
+              </li>
+              <li>
+                  Enter something in the 'Input' area - this will be written on the tape initially as input to the machine.
+              </li>
+              <li>
+                  Click on 'Run Simulation' to start the Turing machine.
+              </li>
+          </ol>
+      </div>
         <div class="row">
             <div class="col col-md-6">
                 <div class="form-group">
@@ -7,24 +22,37 @@
                     <input type="text" ng-model="resolve.input" class="form-control" id="input" placeholder="Enter input">
                 </div>
             </div>
-            <div class="col col-md-6">
-                <div class="form-group">
-                    <label for="alg-select">Algorithm Selection</label>
-                    <select class="form-control" id="alg-select" ng-model="resolve.alg">
-                    <option value="010">01*0</option>
-                    <option value="PALIND">Palindrom</option>
-                    <option value="0101">0101</option>
-                    </select>
-                </div>
-            </div>
+            
         </div>
         <button type="submit" class="btn btn-success btn-block" ng-click="runMachine()">Run Simulation</button>
         <div>
-            <textarea class="form-control" rows="15" ng-model='turing.text'></textarea>
+            <textarea class="form-control" rows="15" ng-model='turing.text' placeholder="Input the turing machine"></textarea>
             <H1>{{inputList}}</H1>
-            
+
         </div>
-            
+
+        <div id="SyntaxInfo">Syntax:
+         <ul>
+            <li>Each line should contain one tuple of the form '<code>&lt;current state&gt; &lt;current symbol&gt; &lt;new symbol&gt; &lt;direction&gt; &lt;new state&gt;</code>'.</li>
+            <li>You can use numbers for <code>&lt;current state&gt;</code> and <code>&lt;new state&gt;</code>. Ex: 0, 1, 2 ...</li>
+            <li> The accept state is represented for "A" and the reject state is represented for "R"</li>
+            <li>You can use 0, 1, #, x or y for <code>&lt;current symbol&gt;</code> and <code>&lt;new symbol&gt;</code>. Symbols are case-sensitive.</li>
+            <li><code>&lt;direction&gt;</code> should be '<code>L</code>', '<code>R</code>'
+            , denoting 'move left' or 'move right', respectively.</li>
+            <li>The machine stop when de current state is A or R.</li>
+         </ul>
+        </div>
+        <div>Exemple:
+        <p> w = {01*0}</p>
+        <p></p>
+            <p>0 0 x R 0</p>
+            <p>0 1 x R 1</p>
+            <p>1 0 x R 2</p>
+            <p>1 1 1 R R</p>
+            <p>2 B x _ A</p>
+            <p>2 0 x _ R</p>
+        </div>
+
         
     </form>
 </section>
