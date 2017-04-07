@@ -265,24 +265,6 @@ angular.module("turingMachine",[]).controller("appController", function($scope){
 2 B B R R*/
 
 /*
-0n 1n
-0 0 x R 1
-0 y y R 3
-0 B B L A
-1 0 0 R 1
-1 y y R 1
-1 1 y L 4
-1 B B L R
-2 0 0 L 2
-2 x x R 0
-3 y y R A
-3 B B L A
-4 y y L 4
-4 x x R R
-4 0 0 L 2
-*/
-
-/*
 0 0 x R 1
 0 1 1 R R
 0 y y R 6
